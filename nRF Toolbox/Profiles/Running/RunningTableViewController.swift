@@ -14,7 +14,7 @@ class RunningTableViewController: PeripheralTableViewController {
             self?.reloadItemInSection(section, itemId: item, animation: .none)
         })
     private let activitySection = ActivitySection(id: .runningActivitySection)
-    override var peripheralDescription: Peripheral { Peripheral.runningSpeedCadenceSensor }
+    override var peripheralDescription: Peripheral { .runningSpeedCadenceSensor }
     override var internalSections: [Section] { [activitySection, runningSpeedCadenceSection] }
     
     override func didUpdateValue(for characteristic: CBCharacteristic) {

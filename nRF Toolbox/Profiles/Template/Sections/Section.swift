@@ -14,6 +14,11 @@ protocol Section {
     var numberOfItems: Int { get }
     var sectionTitle: String { get }
     var id: Identifier<Section> { get }
+    var isHidder: Bool { get }
+}
+
+extension Section {
+    var isHidder: Bool { true }
 }
 
 extension Identifier where Value == Section {

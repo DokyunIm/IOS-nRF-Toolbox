@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension Identifier where Value == DetailsTableViewCellModel {
+private extension Identifier where Value == DetailsTableViewCellModel {
     static let numberOfSteps: Identifier<DetailsTableViewCellModel> = "NumberOfSteps"
 }
 
