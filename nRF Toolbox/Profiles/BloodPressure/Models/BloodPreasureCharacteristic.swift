@@ -19,21 +19,20 @@ struct BloodPreasureCharacteristic {
     let systolicPreasure: Measurement<UnitPressure>
     let diastolicPreasure: Measurement<UnitPressure>
     let meanArterialPreasure: Measurement<UnitPressure>
-    let unit: UnitPressure
     let date: Date?
     let pulseRate: Int?
     
     init(data: Data) {
         let flags: UInt8 = data.read()
-        unit = Flag.isAvailable(bits: flags, flag: .unitFlag) ? .millimetersOfMercury : .kilopascals
+        let unit: UnitPressure = Flag.isAvailable(bits: flags, flag: .unitFlag) ? .millimetersOfMercury : .kilopascals
         
         let systolicValue: Float32 = data.readSFloat(from: 1)
         let diastolicValue: Float32 = data.readSFloat(from: 3)
         let meanArterialValue: Float32 = data.readSFloat(from: 5)
         
-        systolicPreasure = Measurement<UnitPressure>(value: Double(systolicValue), unit: unit).converted(to: .millibars)
-        diastolicPreasure = Measurement<UnitPressure>(value: Double(diastolicValue), unit: unit).converted(to: .millibars)
-        meanArterialPreasure = Measurement<UnitPressure>(value: Double(meanArterialValue), unit: unit).converted(to: .millibars)
+        systolicPreasure = Measurement<UnitPressure>(value: Double(systolicValue), unit: unit)
+        diastolicPreasure = Measurement<UnitPressure>(value: Double(diastolicValue), unit: unit)
+        meanArterialPreasure = Measurement<UnitPressure>(value: Double(meanArterialValue), unit: unit)
         
         var offset = 7
         date = Flag.isAvailable(bits: flags, flag: .timeStamp) ? {

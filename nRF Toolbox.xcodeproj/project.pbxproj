@@ -20,7 +20,9 @@
 		201364F72344A93D00C5AF1F /* BloodPressureSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201364F62344A93D00C5AF1F /* BloodPressureSection.swift */; };
 		201364F92344A94700C5AF1F /* PulseBloodPressureSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201364F82344A94700C5AF1F /* PulseBloodPressureSection.swift */; };
 		201364FB2344A94F00C5AF1F /* TimeBloodPressureSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201364FA2344A94F00C5AF1F /* TimeBloodPressureSection.swift */; };
-		201364FD2344E2E300C5AF1F /* BloodPreasureCuffCharacteristic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201364FC2344E2E300C5AF1F /* BloodPreasureCuffCharacteristic.swift */; };
+		201364FD2344E2E300C5AF1F /* CuffPreasureCharacteristic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201364FC2344E2E300C5AF1F /* CuffPreasureCharacteristic.swift */; };
+		201364FF2345D0EA00C5AF1F /* CuffPressureSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 201364FE2345D0EA00C5AF1F /* CuffPressureSection.swift */; };
+		2013650223462DB900C5AF1F /* BatteryCharacteristic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2013650123462DB900C5AF1F /* BatteryCharacteristic.swift */; };
 		203D0F06232BBEB300C0340D /* DetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203D0F05232BBEB300C0340D /* DetailsTableViewCell.swift */; };
 		203D0F09232F782200C0340D /* CyclingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203D0F08232F782200C0340D /* CyclingTableViewController.swift */; };
 		203D0F0C232FB7D100C0340D /* DetailsTableViewSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203D0F0B232FB7D100C0340D /* DetailsTableViewSection.swift */; };
@@ -191,7 +193,9 @@
 		201364F62344A93D00C5AF1F /* BloodPressureSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloodPressureSection.swift; sourceTree = "<group>"; };
 		201364F82344A94700C5AF1F /* PulseBloodPressureSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PulseBloodPressureSection.swift; sourceTree = "<group>"; };
 		201364FA2344A94F00C5AF1F /* TimeBloodPressureSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeBloodPressureSection.swift; sourceTree = "<group>"; };
-		201364FC2344E2E300C5AF1F /* BloodPreasureCuffCharacteristic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BloodPreasureCuffCharacteristic.swift; sourceTree = "<group>"; };
+		201364FC2344E2E300C5AF1F /* CuffPreasureCharacteristic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuffPreasureCharacteristic.swift; sourceTree = "<group>"; };
+		201364FE2345D0EA00C5AF1F /* CuffPressureSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CuffPressureSection.swift; sourceTree = "<group>"; };
+		2013650123462DB900C5AF1F /* BatteryCharacteristic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryCharacteristic.swift; sourceTree = "<group>"; };
 		203D0F05232BBEB300C0340D /* DetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsTableViewCell.swift; sourceTree = "<group>"; };
 		203D0F08232F782200C0340D /* CyclingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CyclingTableViewController.swift; sourceTree = "<group>"; };
 		203D0F0B232FB7D100C0340D /* DetailsTableViewSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsTableViewSection.swift; sourceTree = "<group>"; };
@@ -402,7 +406,7 @@
 			isa = PBXGroup;
 			children = (
 				200973DC2343748F0091951B /* BloodPreasureCharacteristic.swift */,
-				201364FC2344E2E300C5AF1F /* BloodPreasureCuffCharacteristic.swift */,
+				201364FC2344E2E300C5AF1F /* CuffPreasureCharacteristic.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -413,8 +417,17 @@
 				201364F62344A93D00C5AF1F /* BloodPressureSection.swift */,
 				201364F82344A94700C5AF1F /* PulseBloodPressureSection.swift */,
 				201364FA2344A94F00C5AF1F /* TimeBloodPressureSection.swift */,
+				201364FE2345D0EA00C5AF1F /* CuffPressureSection.swift */,
 			);
 			path = Sections;
+			sourceTree = "<group>";
+		};
+		2013650023462DAA00C5AF1F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				2013650123462DB900C5AF1F /* BatteryCharacteristic.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		203D0F07232F77F300C0340D /* Cycling */ = {
@@ -543,6 +556,7 @@
 		20B7979C2338EC63001328E1 /* Template */ = {
 			isa = PBXGroup;
 			children = (
+				2013650023462DAA00C5AF1F /* Models */,
 				20B25F372319568B006AF321 /* PeripheralTableViewController.swift */,
 				20F0C8022327D417003111E7 /* Sections */,
 				20029FFF231FAFD100C43E06 /* PeripheralManager.swift */,
@@ -1224,6 +1238,7 @@
 				30499E5D1CE4C6C700E0993B /* FolderFilesViewController.swift in Sources */,
 				30499E551CE4732200E0993B /* FileSelectionDelegate.swift in Sources */,
 				201364F92344A94700C5AF1F /* PulseBloodPressureSection.swift in Sources */,
+				2013650223462DB900C5AF1F /* BatteryCharacteristic.swift in Sources */,
 				30F92D4B1CD9CF0700C73285 /* HRMViewController.swift in Sources */,
 				204485EA233A38E900A8A3A3 /* RunningSpeedSection.swift in Sources */,
 				200973D723433A5E0091951B /* PaceMeasurementFormatter.swift in Sources */,
@@ -1232,7 +1247,7 @@
 				20B25F3A231960CF006AF321 /* ConnectTableViewController.swift in Sources */,
 				3001EBC71D1C1BAA008C5C37 /* CGMViewController.swift in Sources */,
 				304D58FD1CE34FC600148271 /* LogViewController.swift in Sources */,
-				201364FD2344E2E300C5AF1F /* BloodPreasureCuffCharacteristic.swift in Sources */,
+				201364FD2344E2E300C5AF1F /* CuffPreasureCharacteristic.swift in Sources */,
 				20D08DFD232929A400569587 /* BGMTableViewCell.swift in Sources */,
 				30499E571CE4736500E0993B /* FilePreselectionDelegate.swift in Sources */,
 				200973DD2343748F0091951B /* BloodPreasureCharacteristic.swift in Sources */,
@@ -1296,6 +1311,7 @@
 				20D08E2B232B95B300569587 /* DisclosureTableViewCell.swift in Sources */,
 				2002A0052322610F00C43E06 /* GlucoseMonitorViewController.swift in Sources */,
 				20C7FE50230E789F00B06FD8 /* MainRouter.swift in Sources */,
+				201364FF2345D0EA00C5AF1F /* CuffPressureSection.swift in Sources */,
 				20E07B3C2305593800FCB205 /* ServiceListViewController.swift in Sources */,
 				30A114561CD2367C000F0F02 /* ScannedPeripheral.swift in Sources */,
 				20F15C3A2313D2B9000C5503 /* InfoActionView.swift in Sources */,

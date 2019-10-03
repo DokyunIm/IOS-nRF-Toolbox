@@ -21,8 +21,9 @@ class RunningTableViewController: PeripheralTableViewController {
         switch characteristic.uuid {
         case CBUUID.Characteristics.Running.measurement:
             characteristic.value.map {
-                self.runningSpeedCadenceSection.update(with: $0)
-                self.activitySection.update(with: $0)
+                let running = RunningCharacteristic(data: $0)
+                self.runningSpeedCadenceSection.update(with: running)
+                self.activitySection.update(with: running)
                 
                 self.reloadSections(ids: [.runningSpeedCadence, .runningActivitySection], animation: .none)
             }

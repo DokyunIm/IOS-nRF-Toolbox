@@ -25,6 +25,7 @@ struct ActionSectionItem {
 }
 
 struct ActionSection: Section {
+    var isHidden: Bool = false 
     
     func dequeCell(for index: Int, from tableView: UITableView) -> UITableViewCell {
         let item = items[index]

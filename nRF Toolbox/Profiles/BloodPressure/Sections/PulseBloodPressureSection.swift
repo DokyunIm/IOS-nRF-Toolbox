@@ -8,8 +8,8 @@
 
 import Foundation
 
-class PulseBloodPressureSection: DetailsTableViewSection {
-    override func update(with data: Data) {
-        super.update(with: data)
+class PulseBloodPressureSection: DetailsTableViewSection<BloodPreasureCharacteristic> {
+    override func update(with characteristic: BloodPreasureCharacteristic) {
+        super.update(with: characteristic)
     }
 }

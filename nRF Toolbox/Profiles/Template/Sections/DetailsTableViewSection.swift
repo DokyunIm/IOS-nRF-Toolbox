@@ -8,7 +8,9 @@
 
 import UIKit
 
-class DetailsTableViewSection: Section {
+class DetailsTableViewSection<C>: Section {
+    lazy var isHidden: Bool = items.count == 0
+    
     typealias SectionUpdated = (Identifier<Section>) -> ()
     typealias ItemUpdated = (Identifier<Section>, Identifier<DetailsTableViewCellModel>) -> ()
 
@@ -39,7 +41,7 @@ class DetailsTableViewSection: Section {
         self.itemUpdated = itemUpdated
     }
     
-    func update(with data: Data) {
+    func update(with characteristic: C) {
         sectionUpdated?(id)
     }
     
