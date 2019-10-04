@@ -16,6 +16,7 @@ class RunningTableViewController: PeripheralTableViewController {
     private let activitySection = ActivitySection(id: .runningActivitySection)
     override var peripheralDescription: Peripheral { .runningSpeedCadenceSensor }
     override var internalSections: [Section] { [activitySection, runningSpeedCadenceSection] }
+    override var navigationTitle: String { "Running Speed and Cadence Sensor" }
     
     override func didUpdateValue(for characteristic: CBCharacteristic) {
         switch characteristic.uuid {

@@ -32,10 +32,11 @@ class GlucoseMonitorViewController: PeripheralTableViewController {
     
     private var selectionSection = OptionSelectioSection<GlucoseMonitorViewController>(id: .selectionResult, sectionTitle: "", items: [OptionSelectioSection.Item(option: "Display Items", selectedCase: "All")])
     
+    override var navigationTitle: String { "Glucose Monitoring" }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(cell: BGMTableViewCell.self)
-        navigationItem.title = "Glucose Monitoring"
     }
     
     // MARK: Table View Handlers

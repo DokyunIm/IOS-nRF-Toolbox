@@ -12,48 +12,38 @@ import CoreBluetooth
 extension Identifier where Value == Section {
     static let bloodPressure: Identifier<Section> = "bloodPressure"
     static let cuffPressure: Identifier<Section> = "cuffPressure"
-}
-
-extension Peripheral {
-    static let bloodPressure = Peripheral(uuid: CBUUID.Profile.bloodPressureMonitor, services: [.battery, .measurement])
-}
-
-private extension Peripheral.Service {
-    static let measurement = Peripheral.Service(uuid: CBUUID.Service.bloodPressureMonitor, characteristics: [
-        Peripheral.Service.Characteristic(uuid: CBUUID.Characteristics.BloodPressure.measurement, action: .notify(true)),
-        Peripheral.Service.Characteristic(uuid: CBUUID.Characteristics.BloodPressure.intermediateCuff, action: .notify(true))
-    ])
+    static let dateTime: Identifier<Section> = "TimeBloodPressureSection"
+    static let heartRate: Identifier<Section> = "HeartRate"
 }
 
 class BloodPressureTableViewController: PeripheralTableViewController {
     private var bloodPressureSection = BloodPressureSection(id: .bloodPressure)
     private var cuffPressureSection = CuffPressureSection(id: .cuffPressure)
+    private var dateTimeSection = TimeBloodPressureSection(id: .dateTime)
+    private var heartRateSection = PulseBloodPressureSection(id: .heartRate)
     
-    override var internalSections: [Section] { [bloodPressureSection, cuffPressureSection] }
+    override var internalSections: [Section] { [bloodPressureSection, heartRateSection, dateTimeSection, cuffPressureSection] }
     override var peripheralDescription: Peripheral { .bloodPressure }
     
     private var dataSectionIds: [Identifier<Section>] = [.bloodPressure, .cuffPressure]
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        navigationItem.title = "Blood Pressure Monitor"
-    }
+    override var navigationTitle: String { "Blood Pressure Monitor" }
     
     override func didUpdateValue(for characteristic: CBCharacteristic) {
         switch characteristic.uuid {
         case CBUUID.Characteristics.BloodPressure.measurement:
             let bloodPressureCharacteristic = BloodPreasureCharacteristic(data: characteristic.value!)
-            
+
             bloodPressureSection.update(with: bloodPressureCharacteristic)
+            heartRateSection.update(with: bloodPressureCharacteristic)
+            dateTimeSection.update(with: bloodPressureCharacteristic)
+            
             setBloodPressureVisibility(true)
             cuffPressureSection.isHidden = true
-//            reloadSections(ids: dataSectionIds)
             tableView.reloadData()
         case CBUUID.Characteristics.BloodPressure.intermediateCuff:
             cuffPressureSection.update(with: CuffPreasureCharacteristic(data: characteristic.value!))
             setBloodPressureVisibility(false)
             cuffPressureSection.isHidden = false
-//            reloadSections(ids: dataSectionIds)
             tableView.reloadData()
         default:
             super.didUpdateValue(for: characteristic)
@@ -62,5 +52,18 @@ class BloodPressureTableViewController: PeripheralTableViewController {
     
     private func setBloodPressureVisibility(_ isVisible: Bool) {
         bloodPressureSection.isHidden = !isVisible
+        heartRateSection.isHidden = !isVisible
+        dateTimeSection.isHidden = !isVisible
+    }
+    
+    override func statusDidChanged(_ status: PeripheralStatus) {
+        if case .connected(_) = status {
+            bloodPressureSection.isHidden = false
+            heartRateSection.isHidden = true
+            dateTimeSection.isHidden = true
+            cuffPressureSection.isHidden = true
+        }
+        
+        super.statusDidChanged(status)
     }
 }

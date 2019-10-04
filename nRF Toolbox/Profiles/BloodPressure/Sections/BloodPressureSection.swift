@@ -10,7 +10,20 @@ import Foundation
 
 class BloodPressureSection: DetailsTableViewSection<BloodPreasureCharacteristic> {
     
+    override init(id: Identifier<Section>, sectionUpdated: ((Identifier<Section>) -> ())? = nil, itemUpdated: ((Identifier<Section>, Identifier<DetailsTableViewCellModel>) -> ())? = nil) {
+        super.init(id: id, sectionUpdated: sectionUpdated, itemUpdated: itemUpdated)
+        isHidden = false
+    }
+    
     override var sectionTitle: String { "Blood Pressure" }
+    
+    override func reset() {
+        items = [
+            DefaultDetailsTableViewCellModel(title: "Systolic", value: "-"),
+            DefaultDetailsTableViewCellModel(title: "Diastolic", value: "-"),
+            DefaultDetailsTableViewCellModel(title: "Mean AP", value: "-")
+        ]
+    }
     
     override func update(with characteristic: BloodPreasureCharacteristic) {
         let formatter = MeasurementFormatter()

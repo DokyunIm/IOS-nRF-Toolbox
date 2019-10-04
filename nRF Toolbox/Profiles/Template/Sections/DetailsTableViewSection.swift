@@ -26,9 +26,7 @@ class DetailsTableViewSection<C>: Section {
         items = [] 
     }
     
-    var numberOfItems: Int {
-        return items.count
-    }
+    var numberOfItems: Int { items.count }
     
     var sectionTitle: String { "" }
     var items: [DetailsTableViewCellModel] = []

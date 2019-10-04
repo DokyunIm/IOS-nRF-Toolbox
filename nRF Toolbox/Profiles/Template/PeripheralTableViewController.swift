@@ -32,7 +32,7 @@ extension Peripheral.Service {
     ])
 }
 
-class PeripheralTableViewController: UITableViewController {
+class PeripheralTableViewController: UITableViewController, StatusDelegate {
     
     private lazy var peripheralManager = PeripheralManager(peripheral: self.peripheralDescription)
     
@@ -62,6 +62,8 @@ class PeripheralTableViewController: UITableViewController {
         }
     ])
     
+    var navigationTitle: String { "" }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tbView = self.tableView
@@ -71,6 +73,8 @@ class PeripheralTableViewController: UITableViewController {
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "ActionCell")
         tableView.register(DisclosureTableViewCell.self, forCellReuseIdentifier: "DisclosureTableViewCell")
         tableView.register(DetailsTableViewCell.self, forCellReuseIdentifier: "DetailsTableViewCell")
+        
+        self.navigationItem.title = navigationTitle
     }
     
     private func disconnect() {
@@ -147,6 +151,58 @@ class PeripheralTableViewController: UITableViewController {
     }
     
     // MARK: Bluetooth events handling
+    
+    func statusDidChanged(_ status: PeripheralStatus) {
+        Log(category: .ble, type: .debug).log(message: "Changed Bluetooth status in \(String(describing: type(of: self))), status: \(status)")
+        switch status {
+        case .poweredOff:
+            activePeripheral = nil
+            
+            let bSettings: InfoActionView.ButtonSettings = ("Settings", {
+                let url = URL(string: "App-Prefs:root=Bluetooth") //for bluetooth setting
+                let app = UIApplication.shared
+                app.open(url!, options: [:], completionHandler: nil)
+
+            })
+            
+            let notContent = InfoActionView.instanceWithParams(message: "Bluetooth is powered off", buttonSettings: bSettings)
+            view = notContent
+        case .disconnected:
+            activePeripheral = nil
+            
+            for var section in visibleSections {
+                section.reset()
+            }
+            tableView.reloadData()
+            
+            let bSettings: InfoActionView.ButtonSettings = ("Connect", {
+                
+                let connectTableViewController = ConnectTableViewController(connectDelegate: self.peripheralManager)
+                
+                
+                let nc = UINavigationController.nordicBranded(rootViewController: connectTableViewController)
+                nc.modalPresentationStyle = .formSheet
+                
+                self.present(nc, animated: true, completion: nil)
+                
+                self.peripheralManager.peripheralListDelegate = connectTableViewController
+                
+                self.peripheralManager.scan(peripheral: self.peripheralDescription)
+            })
+            
+            let notContent = InfoActionView.instanceWithParams(message: "Device is not connected", buttonSettings: bSettings)
+            view = notContent
+        case .connected(let peripheral):
+            dismiss(animated: true, completion: nil)
+            activePeripheral = peripheral
+            
+            activePeripheral?.delegate = self
+            activePeripheral?.discoverServices(peripheralDescription.services?.map { $0.uuid } )
+            
+            view = tbView
+        }
+    }
+    
     func didDiscover(service: CBService, for peripheral: CBPeripheral) {
         let characteristics: [CBUUID]? = self.peripheralDescription
             .services?
@@ -231,60 +287,5 @@ extension PeripheralTableViewController: CBPeripheralDelegate {
     
     @objc func dismissPresentedViewController() {
         presentedViewController?.dismiss(animated: true, completion: nil)
-    }
-}
-
-extension PeripheralTableViewController: StatusDelegate {
-    func statusDidChanged(_ status: PeripheralStatus) {
-        Log(category: .ble, type: .debug).log(message: "Changed Bluetooth status in \(String(describing: type(of: self))), status: \(status)")
-        switch status {
-        case .poweredOff:
-            activePeripheral = nil
-            
-            let bSettings: InfoActionView.ButtonSettings = ("Settings", {
-                let url = URL(string: "App-Prefs:root=Bluetooth") //for bluetooth setting
-                let app = UIApplication.shared
-                app.open(url!, options: [:], completionHandler: nil)
-
-            })
-            
-            let notContent = InfoActionView.instanceWithParams(message: "Bluetooth is powered off", buttonSettings: bSettings)
-            view = notContent
-        case .disconnected:
-            activePeripheral = nil
-            
-            for var section in visibleSections {
-                section.reset()
-            }
-            tableView.reloadData()
-            
-            let bSettings: InfoActionView.ButtonSettings = ("Connect", {
-                
-                let connectTableViewController = ConnectTableViewController(connectDelegate: self.peripheralManager)
-                
-                
-                let nc = UINavigationController.nordicBranded(rootViewController: connectTableViewController)
-                nc.modalPresentationStyle = .formSheet
-                
-                self.present(nc, animated: true, completion: nil)
-                
-                self.peripheralManager.peripheralListDelegate = connectTableViewController
-                
-                self.peripheralManager.scan(peripheral: self.peripheralDescription)
-            })
-            
-            let notContent = InfoActionView.instanceWithParams(message: "Device is not connected", buttonSettings: bSettings)
-            view = notContent
-        case .connected(let peripheral):
-            dismiss(animated: true, completion: nil)
-            activePeripheral = peripheral
-            
-            activePeripheral?.delegate = self
-            activePeripheral?.discoverServices(peripheralDescription.services?.map { $0.uuid } )
-            
-            view = tbView
-//            tbView.reloadData()
-//            reloadSection(id: .disconnect)
-        }
     }
 }

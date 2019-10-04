@@ -10,6 +10,12 @@ import Foundation
 
 class PulseBloodPressureSection: DetailsTableViewSection<BloodPreasureCharacteristic> {
     override func update(with characteristic: BloodPreasureCharacteristic) {
+        guard let heartRate = characteristic.pulseRate else {
+            reset()
+            return
+        }
+        
+        items = [DefaultDetailsTableViewCellModel(title: "Heart Rate", value: "\(heartRate)")]
         super.update(with: characteristic)
     }
 }

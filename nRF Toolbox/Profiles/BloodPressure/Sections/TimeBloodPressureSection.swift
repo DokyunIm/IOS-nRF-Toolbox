@@ -10,6 +10,17 @@ import Foundation
 
 class TimeBloodPressureSection: DetailsTableViewSection<BloodPreasureCharacteristic> {
     override func update(with characteristic: BloodPreasureCharacteristic) {
+        guard let date = characteristic.date else {
+            reset()
+            return
+        }
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeStyle = .medium
+        dateFormatter.dateStyle = .medium
+        
+        items = [DefaultDetailsTableViewCellModel(title: "Date / Time", value: dateFormatter.string(from: date))]
+        
         super.update(with: characteristic)
     }
 }
