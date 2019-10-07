@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0162BA91234B6DAC008405F5 /* HealthTemperatureAditionalSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0162BA90234B6DAC008405F5 /* HealthTemperatureAditionalSection.swift */; };
+		01BE094F2349F71B006ACF06 /* HealthTermometerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BE094E2349F71B006ACF06 /* HealthTermometerTableViewController.swift */; };
+		01BE0953234A1C48006ACF06 /* HealthTermometerCharacteristic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BE0952234A1C48006ACF06 /* HealthTermometerCharacteristic.swift */; };
+		01BE0955234A7500006ACF06 /* HealthTemperatureSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BE0954234A7500006ACF06 /* HealthTemperatureSection.swift */; };
+		01BE0958234A76D4006ACF06 /* Peripheral+Temperature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01BE0957234A76D4006ACF06 /* Peripheral+Temperature.swift */; };
 		0E645A0F1CBF957800D36AD0 /* firmwares in Resources */ = {isa = PBXBuildFile; fileRef = 7E6ED10A196ED482008010B6 /* firmwares */; };
 		20027B08233E116600A0B5ED /* StrideSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20027B07233E116600A0B5ED /* StrideSection.swift */; };
 		2002A000231FAFD100C43E06 /* PeripheralManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20029FFF231FAFD100C43E06 /* PeripheralManager.swift */; };
@@ -29,7 +34,6 @@
 		203D0F0C232FB7D100C0340D /* DetailsTableViewSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203D0F0B232FB7D100C0340D /* DetailsTableViewSection.swift */; };
 		203D0F0E23325E0A00C0340D /* CyclingTableViewSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203D0F0D23325E0A00C0340D /* CyclingTableViewSection.swift */; };
 		204485E1233A148700A8A3A3 /* RunningTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204485E0233A148700A8A3A3 /* RunningTableViewController.swift */; };
-		204485E4233A14BC00A8A3A3 /* Identifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204485E3233A14BC00A8A3A3 /* Identifier.swift */; };
 		204485E7233A172800A8A3A3 /* Peripheral+Running.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204485E6233A172800A8A3A3 /* Peripheral+Running.swift */; };
 		204485EA233A38E900A8A3A3 /* RunningSpeedSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204485E9233A38E900A8A3A3 /* RunningSpeedSection.swift */; };
 		20850177233B690500C792B4 /* RunningCharacteristic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20850176233B690500C792B4 /* RunningCharacteristic.swift */; };
@@ -182,6 +186,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0162BA90234B6DAC008405F5 /* HealthTemperatureAditionalSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthTemperatureAditionalSection.swift; sourceTree = "<group>"; };
+		01BE094E2349F71B006ACF06 /* HealthTermometerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthTermometerTableViewController.swift; sourceTree = "<group>"; };
+		01BE0952234A1C48006ACF06 /* HealthTermometerCharacteristic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthTermometerCharacteristic.swift; sourceTree = "<group>"; };
+		01BE0954234A7500006ACF06 /* HealthTemperatureSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthTemperatureSection.swift; sourceTree = "<group>"; };
+		01BE0957234A76D4006ACF06 /* Peripheral+Temperature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Peripheral+Temperature.swift"; sourceTree = "<group>"; };
 		20027B07233E116600A0B5ED /* StrideSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrideSection.swift; sourceTree = "<group>"; };
 		20029FFF231FAFD100C43E06 /* PeripheralManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeripheralManager.swift; sourceTree = "<group>"; };
 		2002A001231FB8E800C43E06 /* UIImage+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Ext.swift"; sourceTree = "<group>"; };
@@ -203,7 +212,6 @@
 		203D0F0B232FB7D100C0340D /* DetailsTableViewSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsTableViewSection.swift; sourceTree = "<group>"; };
 		203D0F0D23325E0A00C0340D /* CyclingTableViewSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CyclingTableViewSection.swift; sourceTree = "<group>"; };
 		204485E0233A148700A8A3A3 /* RunningTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningTableViewController.swift; sourceTree = "<group>"; };
-		204485E3233A14BC00A8A3A3 /* Identifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Identifier.swift; sourceTree = "<group>"; };
 		204485E6233A172800A8A3A3 /* Peripheral+Running.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Peripheral+Running.swift"; sourceTree = "<group>"; };
 		204485E9233A38E900A8A3A3 /* RunningSpeedSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningSpeedSection.swift; sourceTree = "<group>"; };
 		20850176233B690500C792B4 /* RunningCharacteristic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningCharacteristic.swift; sourceTree = "<group>"; };
@@ -374,6 +382,42 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		01BE094D2349F6CF006ACF06 /* HealthThermometer */ = {
+			isa = PBXGroup;
+			children = (
+				01BE0956234A76B4006ACF06 /* Peripheral */,
+				01BE09512349F748006ACF06 /* Models */,
+				01BE09502349F733006ACF06 /* Sections */,
+				01BE094E2349F71B006ACF06 /* HealthTermometerTableViewController.swift */,
+			);
+			path = HealthThermometer;
+			sourceTree = "<group>";
+		};
+		01BE09502349F733006ACF06 /* Sections */ = {
+			isa = PBXGroup;
+			children = (
+				01BE0954234A7500006ACF06 /* HealthTemperatureSection.swift */,
+				0162BA90234B6DAC008405F5 /* HealthTemperatureAditionalSection.swift */,
+			);
+			path = Sections;
+			sourceTree = "<group>";
+		};
+		01BE09512349F748006ACF06 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				01BE0952234A1C48006ACF06 /* HealthTermometerCharacteristic.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		01BE0956234A76B4006ACF06 /* Peripheral */ = {
+			isa = PBXGroup;
+			children = (
+				01BE0957234A76D4006ACF06 /* Peripheral+Temperature.swift */,
+			);
+			path = Peripheral;
+			sourceTree = "<group>";
+		};
 		2002A003232260CA00C43E06 /* Glucose */ = {
 			isa = PBXGroup;
 			children = (
@@ -464,20 +508,11 @@
 			isa = PBXGroup;
 			children = (
 				20850175233B68D200C792B4 /* Models */,
-				204485E2233A14B300A8A3A3 /* Identifier */,
 				204485E5233A15A300A8A3A3 /* Peripheral */,
 				204485E8233A38C600A8A3A3 /* Sections */,
 				204485E0233A148700A8A3A3 /* RunningTableViewController.swift */,
 			);
 			path = Running;
-			sourceTree = "<group>";
-		};
-		204485E2233A14B300A8A3A3 /* Identifier */ = {
-			isa = PBXGroup;
-			children = (
-				204485E3233A14BC00A8A3A3 /* Identifier.swift */,
-			);
-			path = Identifier;
 			sourceTree = "<group>";
 		};
 		204485E5233A15A300A8A3A3 /* Peripheral */ = {
@@ -556,6 +591,7 @@
 			isa = PBXGroup;
 			children = (
 				20B7979C2338EC63001328E1 /* Template */,
+				01BE094D2349F6CF006ACF06 /* HealthThermometer */,
 				200973D8234343250091951B /* BloodPressure */,
 				203D0F07232F77F300C0340D /* Cycling */,
 				2002A003232260CA00C43E06 /* Glucose */,
@@ -1241,6 +1277,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0162BA91234B6DAC008405F5 /* HealthTemperatureAditionalSection.swift in Sources */,
 				20F0C8042327D42A003111E7 /* Section.swift in Sources */,
 				200973D523433A120091951B /* Flag.swift in Sources */,
 				203D0F06232BBEB300C0340D /* DetailsTableViewCell.swift in Sources */,
@@ -1271,7 +1308,6 @@
 				20F15C432313F821000C5503 /* XibInstantiable.swift in Sources */,
 				3001432D1CECADFB008379DF /* CharacteristicReader.swift in Sources */,
 				3010F6051CDCB4F900CB285A /* BPMViewController.swift in Sources */,
-				204485E4233A14BC00A8A3A3 /* Identifier.swift in Sources */,
 				200973D32341DBAB0091951B /* CyclingCharacteristic.swift in Sources */,
 				309F08651E6D6A5500B7546A /* HKViewController.swift in Sources */,
 				203D0F0E23325E0A00C0340D /* CyclingTableViewSection.swift in Sources */,
@@ -1298,9 +1334,12 @@
 				200973DA234344780091951B /* BloodPressureTableViewController.swift in Sources */,
 				308EE1781CE0CBF700F2A854 /* HTSViewController.swift in Sources */,
 				201364FB2344A94F00C5AF1F /* TimeBloodPressureSection.swift in Sources */,
+				01BE094F2349F71B006ACF06 /* HealthTermometerTableViewController.swift in Sources */,
 				304D58FB1CE34EE600148271 /* Logger.swift in Sources */,
+				01BE0958234A76D4006ACF06 /* Peripheral+Temperature.swift in Sources */,
 				304299241CE6114000E1D2AB /* TutorialViewController.swift in Sources */,
 				20C7FE0E230A9F9300B06FD8 /* LinkTableViewCell.swift in Sources */,
+				01BE0955234A7500006ACF06 /* HealthTemperatureSection.swift in Sources */,
 				20C7FE082306EB5600B06FD8 /* UITableView+Ext.swift in Sources */,
 				20D08E02232A38C200569587 /* TitledError.swift in Sources */,
 				20C7FE53230E811B00B06FD8 /* ServiceProvider.swift in Sources */,
@@ -1336,6 +1375,7 @@
 				5231403022FB07820074325A /* RootNavigationController.swift in Sources */,
 				20B7979A2338B8C0001328E1 /* MeasurementFormatter+Ext.swift in Sources */,
 				20F0C80C2327DB74003111E7 /* BGMSection.swift in Sources */,
+				01BE0953234A1C48006ACF06 /* HealthTermometerCharacteristic.swift in Sources */,
 				3001EBB81D1BE1FB008C5C37 /* BGMItemCell.swift in Sources */,
 				300143271CEC4B9D008379DF /* AppUtilities.swift in Sources */,
 				20B7979823350584001328E1 /* Peripheral+Cycling.swift in Sources */,

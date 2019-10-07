@@ -15,6 +15,7 @@ extension CBUUID {
         static let cyclingSpeedCadenceSensor = CBUUID(string: "00001816-0000-1000-8000-00805F9B34FB")
         static let runningSpeedCadenceSensor = CBUUID(string: "00001814-0000-1000-8000-00805F9B34FB")
         static let bloodPressureMonitor = CBUUID(string: "00001810-0000-1000-8000-00805F9B34FB")
+        static let healthTemperature = CBUUID(string: "00001809-0000-1000-8000-00805F9B34FB")
     }
     
     struct Service {
@@ -23,6 +24,7 @@ extension CBUUID {
         static let cyclingSpeedCadenceSensor = CBUUID(string: "00001816-0000-1000-8000-00805F9B34FB")
         static let runningSpeedCadenceSensor = CBUUID(string: "00001814-0000-1000-8000-00805F9B34FB")
         static let bloodPressureMonitor = CBUUID(string: "00001810-0000-1000-8000-00805F9B34FB")
+        static let healthTemperature = CBUUID(string: "00001809-0000-1000-8000-00805F9B34FB")
     }
     
     struct Characteristics {
@@ -47,6 +49,10 @@ extension CBUUID {
         struct BloodPressure {
             static let measurement = CBUUID(string: "00002A35-0000-1000-8000-00805F9B34FB")
             static let intermediateCuff = CBUUID(string: "00002A36-0000-1000-8000-00805F9B34FB")
+        }
+        
+        struct HealthTemperature {
+            static let measurement = CBUUID(string: "00002A1C-0000-1000-8000-00805F9B34FB")
         }
     }
 }

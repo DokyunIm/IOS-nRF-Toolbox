@@ -9,6 +9,11 @@
 import UIKit
 import CoreBluetooth
 
+private extension Identifier where Value == Section {
+    static let runningSpeedCadence: Identifier<Section> = "runningSpeedCadence"
+    static let runningActivitySection: Identifier<Section> = "runningActivitySection"
+}
+
 class RunningTableViewController: PeripheralTableViewController {
     lazy private var runningSpeedCadenceSection = RunningSpeedSection.init(id: .runningSpeedCadence, itemUpdated: { [weak self] (section, item) in
             self?.reloadItemInSection(section, itemId: item, animation: .none)
@@ -26,7 +31,8 @@ class RunningTableViewController: PeripheralTableViewController {
                 self.runningSpeedCadenceSection.update(with: running)
                 self.activitySection.update(with: running)
                 
-                self.reloadSections(ids: [.runningSpeedCadence, .runningActivitySection], animation: .none)
+//                self.reloadSections(ids: [.runningSpeedCadence, .runningActivitySection], animation: .none)
+                self.tableView.reloadData()
             }
             
         default:

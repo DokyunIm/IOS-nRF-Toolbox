@@ -72,11 +72,14 @@ class GlucoseMonitorViewController: PeripheralTableViewController {
         case CBUUID.Characteristics.BloodGlucoseMonitor.glucoseMeasurement:
             let reading = GlucoseReading(array)
             bgmSection.update(reading: reading)
+            tableView.reloadData()
         case CBUUID.Characteristics.BloodGlucoseMonitor.glucoseMeasurementContext:
             let context = GlucoseReadingContext(array)
             bgmSection.update(context: context)
+            tableView.reloadData()
         case CBUUID.Characteristics.BloodGlucoseMonitor.recordAccessControlPoint:
             handleAccessControlPoint(array: array)
+            tableView.reloadData()
         default:
             super.didUpdateValue(for: characteristic)
         }
