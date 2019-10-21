@@ -43,7 +43,7 @@ class PeripheralTableViewController: UITableViewController, StatusDelegate {
         return self.internalSections + [batterySection, disconnectSection]
     }
     
-    private var visibleSections: [Section] {
+    var visibleSections: [Section] {
         return sections.filter { !$0.isHidden }
     }
     
@@ -173,12 +173,11 @@ class PeripheralTableViewController: UITableViewController, StatusDelegate {
             for var section in visibleSections {
                 section.reset()
             }
-            tableView.reloadData()
+            tbView.reloadData()
             
             let bSettings: InfoActionView.ButtonSettings = ("Connect", {
                 
                 let connectTableViewController = ConnectTableViewController(connectDelegate: self.peripheralManager)
-                
                 
                 let nc = UINavigationController.nordicBranded(rootViewController: connectTableViewController)
                 nc.modalPresentationStyle = .formSheet
