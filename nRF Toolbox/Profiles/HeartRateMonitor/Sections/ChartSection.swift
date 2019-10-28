@@ -1,5 +1,5 @@
 //
-//  ChartSection.swift
+//  GlucoseChartSection.swift
 //  nRF Toolbox
 //
 //  Created by Nick Kibysh on 08/10/2019.
@@ -14,7 +14,7 @@ struct ChartSection: Section {
     
     func dequeCell(for index: Int, from tableView: UITableView) -> UITableViewCell {
         let cell = tableView.dequeueCell(ofType: LinearChartTableViewCell.self)
-        cell.update(with: heartRateValues)
+        cell.update(with: heartRateValues.map { ($0.0, Double($0.1)) } )
         return cell
     }
     

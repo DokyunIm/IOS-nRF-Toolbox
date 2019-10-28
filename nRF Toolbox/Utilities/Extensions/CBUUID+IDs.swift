@@ -10,6 +10,14 @@ import Foundation
 import CoreBluetooth
 
 extension CBUUID {
+
+    convenience init(hex: Int) {
+        let pattern = "0000%@-0000-1000-8000-00805F9B34FB"
+        let hexString = String(hex, radix: 16).uppercased()
+        let uuidStr = String(format: pattern, hexString)
+        self.init(string: uuidStr)
+    }
+
     struct Profile {
         static let bloodGlucoseMonitor = CBUUID(string: "00001808-0000-1000-8000-00805F9B34FB")
         static let cyclingSpeedCadenceSensor = CBUUID(string: "00001816-0000-1000-8000-00805F9B34FB")

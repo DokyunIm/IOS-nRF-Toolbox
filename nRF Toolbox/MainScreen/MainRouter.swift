@@ -42,7 +42,7 @@ class DefaultMainRouter {
             .heartRateMonitor : HeartRateMonitorTableViewController(style: .grouped),
             .healthThermometer : HealthTermometerTableViewController(style: .grouped),
             .runningSensor : RunningTableViewController(style: .grouped),
-            .continuousGlucoseMonitor : CGMViewController.instance(),
+            .continuousGlucoseMonitor : ContinuousGlucoseMonitor(style: .grouped),
             .deviceFirmwareUpgrade : DFUViewController.instance(),
             .proximity : ProximityViewController.instance(),
             .homeKit : HKViewController.instance(),

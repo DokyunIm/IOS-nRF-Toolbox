@@ -13,7 +13,7 @@ struct Peripheral {
     struct Service {
         struct Characteristic {
             enum Action {
-                case read, notify(Bool)
+                case read, write, readWrite, notify(Bool)
             }
             
             let uuid: CBUUID
@@ -37,33 +37,23 @@ class PeripheralTableViewController: UITableViewController, StatusDelegate {
     private lazy var peripheralManager = PeripheralManager(peripheral: self.peripheralDescription)
     
     private var tbView: UITableView!
+    private var batterySection = BatterySection(id: .battery)
+
     private (set) var activePeripheral: CBPeripheral?
     
-    var sections: [Section] {
-        return self.internalSections + [batterySection, disconnectSection]
-    }
-    
-    var visibleSections: [Section] {
-        return sections.filter { !$0.isHidden }
-    }
-    
+    var sections: [Section] { self.internalSections + [batterySection, disconnectSection] }
+    var visibleSections: [Section] { sections.filter { !$0.isHidden } }
     var internalSections: [Section] { [] }
-    
-    var peripheralDescription: Peripheral {
-        return Peripheral(uuid: CBUUID.Profile.bloodGlucoseMonitor, services: [.battery])
-    }
-    
-    private var batterySection = BatterySection(id: .battery)
-    
+    var peripheralDescription: Peripheral { Peripheral(uuid: CBUUID.Profile.bloodGlucoseMonitor, services: [.battery]) }
+    var navigationTitle: String { "" }
+
     private lazy var disconnectSection = ActionSection(id: .disconnect, sectionTitle: "Disconnect", items: [
         ActionSectionItem(title: "Disconnect", style: .destructive) {
             guard let peripheral = self.activePeripheral else { return }
             self.peripheralManager.closeConnection(peripheral: peripheral)
         }
     ])
-    
-    var navigationTitle: String { "" }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         tbView = self.tableView
@@ -220,6 +210,7 @@ class PeripheralTableViewController: UITableViewController, StatusDelegate {
                 switch $0.action {
                 case .read: peripheral.readValue(for: characteristic)
                 case .notify(let enabled): peripheral.setNotifyValue(enabled, for: characteristic)
+                default: break
                 }
             }
     }
